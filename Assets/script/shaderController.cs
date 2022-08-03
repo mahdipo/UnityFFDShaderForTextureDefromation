@@ -5,6 +5,8 @@ using UnityEngine;
 public class shaderController : MonoBehaviour
 {
     public List<GameObject> controllPoints;
+    List<Vector3> cpt_DefaultPos;
+
     public GameObject plan;
 
     Material mat;
@@ -19,8 +21,15 @@ public class shaderController : MonoBehaviour
         }
 
         planSize = plan.GetComponent<MeshRenderer>().bounds.size;
-        Debug.LogError(planSize);
+        //Debug.LogError(planSize);
+
+        cpt_DefaultPos = new List<Vector3>();
+        foreach (var i in controllPoints)
+            cpt_DefaultPos.Add(i.transform.localPosition);
+
         updateShader();
+
+        
     }
     public void updateShader()
     {
@@ -41,12 +50,7 @@ public class shaderController : MonoBehaviour
         mat.SetVector("_ffd78", new Vector4(startvals[6].x, startvals[6].z, startvals[7].x, startvals[7].z));
         mat.SetVector("_ffd910", new Vector4(startvals[8].x, startvals[8].z, startvals[9].x, startvals[9].z));
         mat.SetVector("_ffd1112", new Vector4(startvals[10].x, startvals[10].z, startvals[11].x, startvals[11].z));
-    }
-    public void resetShader()
-    {
-        if (mat == null)
-            return;
-    }
+    }   
 
     Vector3 getStartValue(string cptName, Transform trs, Vector3 planSize, int numRows = 3, int numCols = 4)
     {
@@ -57,12 +61,21 @@ public class shaderController : MonoBehaviour
         float x = raw * (planSize.x / (numCols - 1)) / planSize.x;
         float z = col * (planSize.y / (numRows - 1)) / planSize.y;
 
-        Debug.LogError("planSize:" + planSize + "   localpos: " + trs.localPosition);
+        //Debug.LogError("planSize:" + planSize + "   localpos: " + trs.localPosition);
         float u = (trs.localPosition.x + (planSize.x / 2)) / planSize.x;
         float v = (trs.localPosition.z + ((int)planSize.y / 2)) / planSize.y;
 
-        Debug.LogError(cptName + " :  " + x + " : " + u + "      " + z + " : " + v);
+        //Debug.LogError(cptName + " :  " + x + " : " + u + "      " + z + " : " + v);
 
         return new Vector3(u - x, 0, v - z);
+    }
+
+    public void resetCpts()
+    {
+        for (int i = 0; i < controllPoints.Count; i++)
+        {
+            controllPoints[i].transform.localPosition = cpt_DefaultPos[i];
+        }
+        updateShader();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler
+public class DragDrop:MonoBehaviour
 {
     Vector3 initPos;
     Vector3 deltaPos;
@@ -25,8 +25,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
                 if (hit.collider.gameObject.tag.Contains("ControllerPoint"))
                 {
                     isDragStart = true;
-                    initPos = Input.mousePosition;// Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-                    Debug.LogError(hit.collider.name);
+                    initPos = Input.mousePosition;// Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));                   
                 }
             }
         }
@@ -36,7 +35,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     {
         if (Input.GetMouseButton(0))
         {
-
             if (isDragStart)
             {
                 isDraging = true;
@@ -44,8 +42,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
                 deltaPos = Input.mousePosition - initPos;//  newPos - initPos;
                                                          // transform.localPosition += new Vector3(deltaPos.x, 0, deltaPos.z);
                 transform.position = newPos;
-                onDrag.Invoke();
-                Debug.LogError(deltaPos);
+                onDrag.Invoke();               
             }
         }
 
@@ -57,31 +54,5 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         isDragStart = false;
     }
 
-    void UpdateShader()
-    {
-
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-
-
-
-    public void OnDrag(PointerEventData eventData)
-    {
-
-
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-
-    }
+  
 }
