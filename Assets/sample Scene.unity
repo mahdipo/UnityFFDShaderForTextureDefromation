@@ -650,6 +650,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1ed5c13097cda8e48a0b8facd74e735a, type: 2}
+    - target: {fileID: -5173463534296437290, guid: a58fe80ad91424b4b9ffd6310e5c3b4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: -511310931620521848, guid: a58fe80ad91424b4b9ffd6310e5c3b4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a58fe80ad91424b4b9ffd6310e5c3b4c,
         type: 3}
       propertyPath: m_Name
@@ -1216,11 +1226,11 @@ RectTransform:
   m_Father: {fileID: 116054960}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -499.8, y: -235.9}
-  m_SizeDelta: {x: 80, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 30}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &424449601
 MonoBehaviour:
   m_ObjectHideFlags: 0
