@@ -7,6 +7,7 @@ I used Bernstein polynomial  and Bilinear interpolation to deform uv in shader r
 **Bernstine Polynomial:**
 
 ![alt text](https://i.imgur.com/636rm15.jpeg)
+
 ![alt text](https://i.imgur.com/aDt3A90.jpg)
 
 https://en.wikipedia.org/wiki/Bernstein_polynomial
