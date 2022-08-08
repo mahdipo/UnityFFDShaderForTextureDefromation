@@ -25,7 +25,7 @@ public class DragDrop:MonoBehaviour
                 if (hit.collider.gameObject.tag.Contains("ControllerPoint"))
                 {
                     isDragStart = true;
-                    initPos = Input.mousePosition;// Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));                   
+                    initPos = Input.mousePosition;          
                 }
             }
         }
@@ -39,8 +39,8 @@ public class DragDrop:MonoBehaviour
             {
                 isDraging = true;
                 Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, (transform.position - Camera.main.transform.position).z));
-                deltaPos = Input.mousePosition - initPos;//  newPos - initPos;
-                                                         // transform.localPosition += new Vector3(deltaPos.x, 0, deltaPos.z);
+                deltaPos = Input.mousePosition - initPos;
+                                                         
                 transform.position = newPos;
                 onDrag.Invoke();               
             }

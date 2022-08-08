@@ -20,8 +20,7 @@ public class shaderController : MonoBehaviour
             mat = mr.material;
         }
 
-        planSize = plan.GetComponent<MeshRenderer>().bounds.size;
-        //Debug.LogError(planSize);
+        planSize = plan.GetComponent<MeshRenderer>().bounds.size;       
 
         cpt_DefaultPos = new List<Vector3>();
         foreach (var i in controllPoints)
@@ -47,8 +46,7 @@ public class shaderController : MonoBehaviour
         for (int i = 0; i < startvals.Count; i+=2)
         {
             string param_name = "_ffd" + n + (n + 1);
-            mat.SetVector(param_name, new Vector4(startvals[i].x, startvals[i].z, startvals[i+1].x, startvals[i+1].z));
-            Debug.LogError(param_name);
+            mat.SetVector(param_name, new Vector4(startvals[i].x, startvals[i].z, startvals[i+1].x, startvals[i+1].z));           
             n += 2;
         }        
     }   
@@ -61,13 +59,10 @@ public class shaderController : MonoBehaviour
 
         float x = raw * (planSize.x / (numCols - 1)) / planSize.x;
         float z = col * (planSize.y / (numRows - 1)) / planSize.y;
-
-        //Debug.LogError("planSize:" + planSize + "   localpos: " + trs.localPosition);
+       
         float u = (trs.localPosition.x + (planSize.x / 2)) / planSize.x;
         float v = (trs.localPosition.z + (planSize.y / 2)) / planSize.y;
        
-        //Debug.LogError(cptName + " :  " + x + " : " + u + "      " + z + " : " + v);
-
         return new Vector3(u - x, 0, v - z);
     }
 
